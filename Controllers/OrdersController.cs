@@ -9,16 +9,17 @@ namespace UserLogin.Controllers
     {
         private readonly AppDbContext _context;
 
-        OrdersController(AppDbContext context)
+        public OrdersController(AppDbContext context)
         {
             _context = context;
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateOrder([FromBody] OrderCreateDto dto)
+        public async Task<IActionResult> CreateOrder([FromBody] OrderCreateDto dto) 
         {
             
-            var order = new Order
+            var order = new Order  // "Order" actuall Table of database mapping with OrderCreateDto
+                                   // dto is work like tempory object to hold the data that came from api and autmatically mapped with OrderCreateDto properties
             {
                 FirstName = dto.FirstName,
                 LastName = dto.LastName,
@@ -30,14 +31,14 @@ namespace UserLogin.Controllers
             await _context.SaveChangesAsync(); 
 
             
-            var orderItems = dto.Cakes.Select(c => new OrderItem
+            var orderItems = dto.Cakes.Select(c => new OrderItem  // Mapping OrderItemDto to OrderItem for each cake in the order
             {
                 OrderId = order.OrderId,
                 CakeName = c.CakeName,
                 Price = c.Price
             }).ToList();
 
-            _context.OrderItems.AddRange(orderItems);
+            _context.OrderItems.AddRange(orderItems); //AddRange() method is used to add multiple entities to the DbSet in a single call.
             await _context.SaveChangesAsync();
 
             return Ok(new
