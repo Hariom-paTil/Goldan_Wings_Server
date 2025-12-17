@@ -18,7 +18,9 @@ namespace UserLogin.Controllers
 
         
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] LoginDto user)
+        public async Task<IActionResult> Register([FromBody] LoginDto user) // register() is method 
+                                                                            // [FromBody] Tell Asp.net that data came from JSON
+                                                                            // (LoginDto user) is called dto hold the data that came from api
         {
             if (await _context.Users.AnyAsync(u => u.Email == user.Email))
                 return BadRequest(new { message = "Email already exists" });
