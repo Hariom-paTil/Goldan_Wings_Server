@@ -1,10 +1,10 @@
-﻿namespace UserLogin
+﻿namespace UserLogin.Models
 {
-    public class User
+    public class UserLoginInfo
     {
         public int Id { get; set; }
 
-        public String Email { get; set; }
+        public string Email { get; set; }
 
         public string PasswordHash { get; set; }
 

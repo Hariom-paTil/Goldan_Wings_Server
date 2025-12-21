@@ -1,14 +1,17 @@
-﻿namespace UserLogin.Controllers
-{
-    public class Order
-    {
+﻿using System.ComponentModel.DataAnnotations;
 
+namespace UserLogin.Models
+{
+    public class UserOrderInfo
+    {
+        [Key]
         public int OrderId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
 
-        public List<OrderItem> OrderItems { get; set; }
+
+        public List<CakeOrderList> OrderItems { get; set; }
     }
 }

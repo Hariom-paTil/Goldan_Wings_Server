@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using UserLogin.Controllers;
+using UserLogin.Models;
 
 namespace UserLogin
 {
@@ -10,12 +10,12 @@ namespace UserLogin
         {
 
         }
-        public DbSet<Cake> Cakes { get; set; }
+        public DbSet<Cakes> Cakes { get; set; }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<UserLoginInfo> Users { get; set; }
 
-        public DbSet<Order> Orders { get; set; }
+        public DbSet<UserOrderInfo> Orders { get; set; }
 
-        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<CakeOrderList> OrderItems { get; set; }
     }
 }

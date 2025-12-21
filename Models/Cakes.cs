@@ -1,6 +1,6 @@
-﻿namespace UserLogin
+﻿namespace UserLogin.Models
 {
-    public class Cake
+    public class Cakes
     {
         
         
