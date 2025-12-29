@@ -16,6 +16,7 @@ namespace UserLogin.Mapping
                        opt => opt.MapFrom(src => src.Cakes)).ReverseMap(); 
 
             CreateMap<CakeOrderListDto, CakeOrderList>().ReverseMap();
+            CreateMap<CustomizeCake, CustomizeCakeDto>().ReverseMap();
         }
     }
 }

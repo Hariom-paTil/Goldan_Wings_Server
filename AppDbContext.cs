@@ -10,6 +10,8 @@ namespace UserLogin
         {
 
         }
+
+        public DbSet<CustomizeCake>  Customize_Cake { get; set; }
         public DbSet<Cakes> Cakes { get; set; }
 
         public DbSet<UserLoginInfo> Users { get; set; }
