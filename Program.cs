@@ -2,6 +2,7 @@
 using UserLogin;
 using UserLogin.Mapping;
 using UserLogin.Repo_Pattern;
+using UserLogin.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped<IUserLoginService, UserLoginService>();
 
 // ✅ CORS
 builder.Services.AddCors(options =>

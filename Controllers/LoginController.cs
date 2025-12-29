@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using UserLogin.DTO;
 using UserLogin.Models;
 using UserLogin.Repo_Pattern;
+using UserLogin.Service;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,24 +15,24 @@ namespace UserLogin.Controllers
     public class LoginController : ControllerBase
     {
 
-        private readonly IMapper _mapper;
-        private readonly IGenericRepository<UserLoginInfo> _userRepository;
+     
+        private readonly IUserLoginService _userLoginService;
 
-        public LoginController(IMapper mapper, IGenericRepository<UserLoginInfo> genericRepository)
+        public LoginController(IUserLoginService userLoginService)
         {
             
-            _mapper = mapper;
-            _userRepository = genericRepository;
+       
+            _userLoginService = userLoginService;
         }
 
         
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] UserLoginInfoDto user) 
         {
-            var userEntity = _mapper.Map<UserLoginInfo>(user);
-            await _userRepository.AddAsync(userEntity);
-            return Ok("User Login");
+      
 
+           var response= await _userLoginService.AddNewUserAsync(user);
+            return Ok(response);
 
         }                                                      
                                                                   
