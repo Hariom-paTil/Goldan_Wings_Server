@@ -12,6 +12,6 @@ namespace UserLogin.Models
         public string Address { get; set; }
 
 
-        public List<CakeOrderList> OrderItems { get; set; }
+        public List<CakeOrderList> OrderItems { get; set; } = new();
     }
 }

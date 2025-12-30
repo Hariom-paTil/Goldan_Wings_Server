@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using System.Runtime;
 using UserLogin.DTO;
 using UserLogin.Models;
 
@@ -12,8 +11,12 @@ namespace UserLogin.Mapping
            CreateMap<Cakes, CakesDto>().ReverseMap();
             CreateMap<UserLoginInfo, UserLoginInfoDto>().ReverseMap();
             CreateMap<UserOrderInfoDto, UserOrderInfo>()
-            .ForMember(dest => dest.OrderItems,
-                       opt => opt.MapFrom(src => src.Cakes)).ReverseMap(); 
+                .ForMember(dest => dest.OrderItems,
+               opt => opt.MapFrom(src => src.Cakes));
+
+            CreateMap<UserOrderInfo, UserOrderInfoDto>()
+                .ForMember(dest => dest.Cakes,
+                           opt => opt.MapFrom(src => src.OrderItems));
 
             CreateMap<CakeOrderListDto, CakeOrderList>().ReverseMap();
             CreateMap<CustomizeCake, CustomizeCakeDto>().ReverseMap();
