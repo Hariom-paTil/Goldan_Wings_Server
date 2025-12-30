@@ -19,5 +19,7 @@ namespace UserLogin
         public DbSet<UserOrderInfo> Orders { get; set; }
 
         public DbSet<CakeOrderList> OrderItems { get; set; }
+
+        public DbSet<AdminLogins> AdminLogin { get; set; }
     }
 }

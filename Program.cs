@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using UserLogin;
+using UserLogin.Admin.Service;
 using UserLogin.Mapping;
 using UserLogin.Repo_Pattern;
 using UserLogin.Service;
@@ -21,6 +22,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IUserLoginService, UserLoginService>();
+builder.Services.AddScoped<IAdminLoginService, AdminLoginService>();
 
 // ✅ CORS
 builder.Services.AddCors(options =>

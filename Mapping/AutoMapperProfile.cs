@@ -20,6 +20,8 @@ namespace UserLogin.Mapping
 
             CreateMap<CakeOrderListDto, CakeOrderList>().ReverseMap();
             CreateMap<CustomizeCake, CustomizeCakeDto>().ReverseMap();
+
+            CreateMap<AdminLogins, AdminLoginDto>().ReverseMap();
         }
     }
 }
