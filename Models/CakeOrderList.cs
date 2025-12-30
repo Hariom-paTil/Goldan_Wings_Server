@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UserLogin.Models
 {
+    [Table("OrderItems")]
     public class CakeOrderList
     {
         [Key]
@@ -12,7 +13,7 @@ namespace UserLogin.Models
         public decimal Price { get; set; }
 
 
-       
+        [ForeignKey("OrderId")]
         public UserOrderInfo Order { get; set; }
     }
 }

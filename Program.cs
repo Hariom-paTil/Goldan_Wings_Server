@@ -19,10 +19,12 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
-builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IUserLoginService, UserLoginService>();
 builder.Services.AddScoped<IAdminLoginService, AdminLoginService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
+
 
 // ✅ CORS
 builder.Services.AddCors(options =>

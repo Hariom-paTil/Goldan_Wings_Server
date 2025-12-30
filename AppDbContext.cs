@@ -21,5 +21,13 @@ namespace UserLogin
         public DbSet<CakeOrderList> OrderItems { get; set; }
 
         public DbSet<AdminLogins> AdminLogin { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<UserOrderInfo>()
+                .HasMany(o => o.OrderItems)
+                .WithOne(c => c.Order)
+                .HasForeignKey(c => c.OrderId);
+        }
     }
 }

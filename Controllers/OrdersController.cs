@@ -13,13 +13,15 @@ namespace UserLogin.Controllers
     {
         private readonly IMapper _mapper;
          private readonly IGenericRepository<UserOrderInfo> _orderRepository;
+       
 
 
         public OrdersController(IMapper mapper, IGenericRepository<UserOrderInfo> genericRepository)
         {
-            
+
             _mapper = mapper;
             _orderRepository = genericRepository;
+           
         }
 
         [HttpPost]
