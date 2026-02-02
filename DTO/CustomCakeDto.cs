@@ -2,7 +2,7 @@
 {
     public class CustomCakeDto
     {
-        public int CustomCakePK { get; set; }
+      
 
         public int CakeId { get; set; }
 

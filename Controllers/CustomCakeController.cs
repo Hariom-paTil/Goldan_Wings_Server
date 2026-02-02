@@ -28,7 +28,7 @@ namespace UserLogin.Controllers
             return Ok(dto);
         }
 
-        [HttpPost]
+        [HttpPost("AddCakes")]
         public async Task<IActionResult> AddCustomCake([FromBody]CustomCakeDto customCake)
         {
          
