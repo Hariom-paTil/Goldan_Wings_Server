@@ -30,5 +30,16 @@ namespace UserLogin.Controllers
             return Ok(dto);
 
         }
+        [HttpPost]
+        public async Task<IActionResult> CreateCake([FromBody] CakesDto cakeDto)
+        {
+            if (cakeDto == null)
+            {
+                return BadRequest();
+            }
+            var cakeEntity = _mapper.Map<Cakes>(cakeDto);
+            await _cakeRepository.AddAsync(cakeEntity);
+            return CreatedAtAction(nameof(GetUsers), new { id = cakeEntity.Id }, cakeEntity);
+        }
     }
 }

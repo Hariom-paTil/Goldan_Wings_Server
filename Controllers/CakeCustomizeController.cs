@@ -21,7 +21,7 @@ namespace UserLogin.Controllers
         [HttpGet]
         public async Task<IActionResult> GetCustomizeCakes()
         {
-            var customizeCakeData = await _customizeCakeRepository.GetAllAsync();
+            var customizeCakeData = await _customizeCakeRepository.GetAllAsync(); // this method only send data to ui it not for order
             var dto = _mapper.Map<IEnumerable<CustomizeCakeDto>>(customizeCakeData);
             return Ok(dto);
         }
