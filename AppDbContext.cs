@@ -24,6 +24,10 @@ namespace UserLogin
 
         public DbSet<CustomCakes> CustomCake { get; set; }
 
+        public DbSet<CustomCakeOrder> CustomCakeOrder { get; set; }
+
+        public DbSet<CustomCakeUserInfo> CustomerCakeUserInfo { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<UserOrderInfo>()
