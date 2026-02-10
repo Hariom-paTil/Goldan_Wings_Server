@@ -19,13 +19,22 @@ namespace UserLogin.Controllers
             _mapper = mapper;
             _genericRepository = genericRepository;
         }
-        [HttpPost("AddOnItem")]
+        [HttpPost("AddOnItems")]
 
         public async Task<IActionResult> InsertNewItem([FromBody] AddOnItemDto dto)
         {
             var data = _mapper.Map<AddOnItem>(dto);
             await _genericRepository.AddAsync(data);
             return Ok(true);
+
+        }
+        [HttpGet("GetAddOnItems")]
+
+        public async Task<IActionResult> GetAddItemData()
+        {
+            var data = await _genericRepository.GetAllAsync();
+            var responceBody = _mapper.Map<List<AddOnItemDto>>(data);
+            return Ok(responceBody);
 
         }
     }
